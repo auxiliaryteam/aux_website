@@ -398,4 +398,18 @@
 						$main._show(location.hash.substr(1), true);
 					});
 
+		// Form.
+
+
+			const scriptURL = 'https://script.google.com/macros/s/AKfycbzOD7PNArgmkgjuSS3B8759g5XOW8eonwnE7qafPxpDDRkmQgsG/exec'
+			const form = document.forms['submit-to-google-sheet']
+
+			form.addEventListener('submit', e => {
+			    e.preventDefault()
+			    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+			      .then(response => console.log('Success!', response))
+			      .catch(error => console.error('Error!', error.message))
+			window.location.href=location.pathname
+			});
+
 })(jQuery);
